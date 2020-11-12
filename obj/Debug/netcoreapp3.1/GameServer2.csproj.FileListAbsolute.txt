@@ -1,0 +1,13 @@
+C:\Users\Hadis\source\repos\GameServer2\bin\Debug\netcoreapp3.1\GameServer2.exe
+C:\Users\Hadis\source\repos\GameServer2\bin\Debug\netcoreapp3.1\GameServer2.deps.json
+C:\Users\Hadis\source\repos\GameServer2\bin\Debug\netcoreapp3.1\GameServer2.runtimeconfig.json
+C:\Users\Hadis\source\repos\GameServer2\bin\Debug\netcoreapp3.1\GameServer2.runtimeconfig.dev.json
+C:\Users\Hadis\source\repos\GameServer2\bin\Debug\netcoreapp3.1\GameServer2.dll
+C:\Users\Hadis\source\repos\GameServer2\bin\Debug\netcoreapp3.1\GameServer2.pdb
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.csprojAssemblyReference.cache
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.AssemblyInfoInputs.cache
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.AssemblyInfo.cs
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.csproj.CoreCompileInputs.cache
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.dll
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.pdb
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.genruntimeconfig.cache
