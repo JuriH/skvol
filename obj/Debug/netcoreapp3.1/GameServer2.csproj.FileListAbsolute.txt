@@ -11,3 +11,9 @@ C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.cspr
 C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.dll
 C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.pdb
 C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\GameServer2.genruntimeconfig.cache
+C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.exe
+C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.deps.json
+C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.runtimeconfig.json
+C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.runtimeconfig.dev.json
+C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.dll
+C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.pdb
