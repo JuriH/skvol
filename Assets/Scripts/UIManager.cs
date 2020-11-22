@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static UIManager instance;
+    public static  UIManager instance;
 
     public GameObject startMenu;
     public InputField usernameField;
@@ -18,7 +18,7 @@ public class UIManager : MonoBehaviour
         }
         else if (instance != this)
         {
-            Debug.Log("Instance already exists, destroying object!");
+            Debug.Log("Instance already exists, destroying object");
             Destroy(this);
         }
     }
@@ -27,6 +27,6 @@ public class UIManager : MonoBehaviour
     {
         startMenu.SetActive(false);
         usernameField.interactable = false;
-        Client.instance.ConnectToServer();
+        Client.instance.Connect();
     }
 }

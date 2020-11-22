@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
+using System.Threading;
 using System;
+using System.IO;
+using System.Text;  // For Encoding
 
 public class Client : MonoBehaviour
 {
     public static Client instance;
-    public static int dataBufferSize = 4096;
+    static public String host = "18.192.144.101";
+    static public Int32 port = 26950;
+    public IPEndPoint ipEndPoint = new IPEndPoint(
+        IPAddress.Parse(host), port);
+    public TcpListener listener = null;
+    public TcpClient client = null;
+    public static NetworkStream ns = null;
+    private static byte[] receiveBuffer;
 
-    public string ip = "127.0.0.1";
-    public int port = 26950;
-    public int myId = 0;
-    public TCP tcp;
-
-    private delegate void PacketHandler(Packet _packet);
-    private static Dictionary<int, PacketHandler> packetHandlers;
 
     private void Awake()
     {
@@ -31,174 +34,121 @@ public class Client : MonoBehaviour
         }
     }
 
-    private void Start()
+
+
+    void OnApplicationQuit()
     {
-        tcp = new TCP();
+        ns.Close();
+        ns = null;
+        client.Close();
+        client = null;
     }
+
+
+    public void Connect()
+    {
+        Thread thread = new Thread(
+                new ThreadStart(
+                    ConnectToServer));
+        thread.Start();
+    }
+
 
     public void ConnectToServer()
     {
-        InitializeClientData();
-        tcp.Connect();
+        client = new TcpClient();
+        client.Connect(ipEndPoint);
+
+        ns = client.GetStream();
+
+        Thread receiveThread = new Thread(() => ReceiveFromServer());
+        SendUsername();
     }
 
-    public class TCP
+
+    public void SendUsername()
     {
-        public TcpClient socket;
+        String username = UIManager.instance.usernameField.text;
 
-        private NetworkStream stream;
-        private Packet receivedData;
-        private byte[] receiveBuffer;
+        // First character in message is the datatype so server can identify
+        // what kind of message its receiving from client
+        Byte[] sendBytes = Encoding.UTF8.GetBytes($"1{username}");
 
-        public void Connect()
+        ns.Write(sendBytes, 0, sendBytes.Length);
+
+        // Start pinging the server after sending client's username
+        PingServer();
+    }
+
+
+    public void ReceiveFromServer()
+    {
+        NetworkStream ns = client.GetStream();
+
+        while (true)
         {
-            socket = new TcpClient
+            // Reads NetworkStream into a byte buffer.
+            byte[] bytes = new byte[client.ReceiveBufferSize];
+
+            // Read can return anything from 0 to numBytesToRead.
+            // This method blocks until at least one byte is read.
+            ns.Read(bytes, 0, (int)client.ReceiveBufferSize);
+
+            // Returns the data received from the host to the console.
+            string returndata = Encoding.UTF8.GetString(bytes);
+
+            if (returndata.Length > 0)
             {
-                ReceiveBufferSize = dataBufferSize,
-                SendBufferSize = dataBufferSize
-            };
-
-            receiveBuffer = new byte[dataBufferSize];
-            socket.BeginConnect(
-                instance.ip,
-                instance.port,
-                ConnectCallback,
-                socket);
-        }
-
-        private void ConnectCallback(IAsyncResult _result)
-        {
-            socket.EndConnect(_result);
-
-            if (!socket.Connected)
-            {
-                return;
+                Debug.Log("Server assigned ID of " + returndata + " to you");
             }
-
-            stream = socket.GetStream();
-
-            receivedData = new Packet();
-
-            stream.BeginRead(
-                receiveBuffer,
-                0,
-                dataBufferSize,
-                ReceiveCallback,
-                null);
-        }
-
-        
-        public void SendData(Packet _packet)
-        {
-            try
-            {
-                if (socket != null)
-                {
-                    stream.BeginWrite(
-                        _packet.ToArray(),
-                        0,
-                        _packet.Length(),
-                        null,
-                        null);
-                }
-            }
-            catch (Exception _ex)
-            {
-                Debug.Log($"Error sending data to server via TCP: {_ex}");
-            }
-        }
-
-        private void ReceiveCallback(IAsyncResult _result)
-        {
-            try
-            {
-                int _byteLength = stream.EndRead(_result);
-                if (_byteLength <= 0)
-                {
-                    // TODO: Disconnect
-                    return;
-                }
-
-                byte[] _data = new byte[_byteLength];
-                Array.Copy(
-                    receiveBuffer,
-                    _data,
-                    _byteLength);
-
-                receivedData.Reset(HandleData(_data));
-                stream.BeginRead(
-                    receiveBuffer,
-                    0,
-                    dataBufferSize,
-                    ReceiveCallback,
-                    null);
-            }
-            catch
-            {
-                // TODO: disconnect
-            }
-        }
-
-
-        private bool HandleData(byte[] _data)
-        {
-            int _packetLength = 0;
-
-            receivedData.SetBytes(_data);
-
-            if (receivedData.UnreadLength() >= 4)
-            {
-                _packetLength = receivedData.ReadInt();
-                if (_packetLength <= 0)
-                {
-                    return true;
-                }
-            }
-
-
-            while (_packetLength > 0
-                && _packetLength <= receivedData.UnreadLength())
-            {
-                byte[] _packetBytes = receivedData.ReadBytes(_packetLength);
-                ThreadManager.ExecuteOnMainThread(() =>
-                {
-                    using (Packet _packet = new Packet(_packetBytes))
-                    {
-                        int _packetId = _packet.ReadInt();
-                        packetHandlers[_packetId](_packet);
-                    }
-                });
-
-
-                _packetLength = 0;
-                if (receivedData.UnreadLength() >= 4)
-                {
-                    _packetLength = receivedData.ReadInt();
-                    if (_packetLength <= 0)
-                    {
-                        return true;
-                    }
-                }
-            }
-
-
-            if (_packetLength <= 1)
-            {
-                return true;
-            }
-
-
-            return false;
         }
     }
 
 
-    private void InitializeClientData()
+    public void PingServer()
     {
-        packetHandlers = new Dictionary<int, PacketHandler>()
+        // Pinging server every 5 seconds just
+        // to compensate possible network delays
+        DateTime targetTime = DateTime.Now.AddMilliseconds(5000);
+
+        try
         {
-            { (int)ServerPackets.welcome, ClientHandle.Welcome }
-        };
-        Debug.Log("Initialized packets.");
+            while (client.Connected)
+            {
+                while (targetTime > DateTime.Now && client != null)
+                {
+                    // Do nothing
+                }
+                targetTime = DateTime.Now.AddSeconds(9);
+                Ping();
+            }
+        }
+        catch (NullReferenceException ex)
+        {
+            Debug.Log(ex);
+        }
+    }
+
+
+    public void Ping()
+    {
+        // '2' is the dataType on server for pings
+        Byte[] sendBytes = Encoding.UTF8.GetBytes("2");
+        try
+        {
+            ns.Write(sendBytes, 0, sendBytes.Length);
+        }
+        catch (Exception ex)
+        {
+            if (ex is ObjectDisposedException || ex is OverflowException)
+            {
+                Debug.Log(ex);
+            } else
+            {
+                // Debug any error
+                Debug.Log(ex);
+            }
+        }
+        Debug.Log("Ping sent to server");
     }
 }
