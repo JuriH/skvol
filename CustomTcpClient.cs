@@ -1,10 +1,12 @@
-﻿using System.Net.Sockets;
+﻿using System;
+using System.Net.Sockets;
 
 namespace GameServer2
 {
     class CustomTcpClient : TcpClient
     {
         public int Id { get; set; }
+        public String Username { get; set; }
 
         public CustomTcpClient(Socket acceptedSocket)
         {

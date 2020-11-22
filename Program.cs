@@ -8,7 +8,7 @@ namespace GameServer2
         {
             Console.Title = "Game Server";
             Console.WriteLine("Server started");
-            Clients.AcceptClientsOnAnotherThread();
+            Clients.AcceptNewClientsInAsync();
         }
     }
 }

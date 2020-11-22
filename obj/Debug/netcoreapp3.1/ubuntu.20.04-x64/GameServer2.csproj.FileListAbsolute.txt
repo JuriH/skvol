@@ -1,0 +1,15 @@
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\ubuntu.20.04-x64\GameServer2
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.dll.config
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.deps.json
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.runtimeconfig.json
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.runtimeconfig.dev.json
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.dll
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.pdb
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.csprojAssemblyReference.cache
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.AssemblyInfoInputs.cache
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.AssemblyInfo.cs
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.csproj.CoreCompileInputs.cache
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.csproj.CopyComplete
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.dll
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.pdb
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\ubuntu.20.04-x64\GameServer2.genruntimeconfig.cache

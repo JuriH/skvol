@@ -17,3 +17,16 @@ C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.runtimeconfig.
 C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.runtimeconfig.dev.json
 C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.dll
 C:\Users\Hadis\source\repos\GameClient2\netcoreapp3.1\GameServer2.pdb
+C:\Users\Hadis\Documents\GameServerBuild\netcoreapp3.1\GameServer2.exe
+C:\Users\Hadis\Documents\GameServerBuild\netcoreapp3.1\GameServer2.deps.json
+C:\Users\Hadis\Documents\GameServerBuild\netcoreapp3.1\GameServer2.runtimeconfig.json
+C:\Users\Hadis\Documents\GameServerBuild\netcoreapp3.1\GameServer2.runtimeconfig.dev.json
+C:\Users\Hadis\Documents\GameServerBuild\netcoreapp3.1\GameServer2.dll
+C:\Users\Hadis\Documents\GameServerBuild\netcoreapp3.1\GameServer2.pdb
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\GameServer2.exe
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\GameServer2.deps.json
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\GameServer2.runtimeconfig.json
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\GameServer2.runtimeconfig.dev.json
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\GameServer2.dll
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\GameServer2.pdb
+C:\Users\Hadis\Documents\VM Shared Folder\GameServer\netcoreapp3.1\GameServer2.dll.config
