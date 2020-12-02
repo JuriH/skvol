@@ -1,33 +1,37 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 using System;
-using System.IO;
-using System.Text;  // For Encoding
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Text;
+using System.Threading.Tasks;
 
 public class Client : MonoBehaviour
 {
-    public static Client instance;
-    static public String host = "18.192.144.101";
-    static public Int32 port = 26950;
-    public IPEndPoint ipEndPoint = new IPEndPoint(
-        IPAddress.Parse(host), port);
-    public TcpListener listener = null;
-    public TcpClient client = null;
-    public static NetworkStream ns = null;
-    private static byte[] receiveBuffer;
+    // While const is initialized at compile time,
+    // readonly keyword allow the variable to be
+    // initialized either at compile time or runtime.
+    public static Client Instance;
+    private const string Host = "127.0.0.1";
+    private const int Port = 26950;
+
+    private readonly IPEndPoint _ipEndPoint = new IPEndPoint(
+        IPAddress.Parse(Host), Port);
+    
+    private TcpClient _client;
+    private static NetworkStream _ns;
+    private static byte[] _receiveBuffer;
 
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
-        else if (instance != this)
+        else if (Instance != this)
         {
             Debug.Log("Instance already exists, destroying object!");
             Destroy(this);
@@ -35,120 +39,125 @@ public class Client : MonoBehaviour
     }
 
 
-
-    void OnApplicationQuit()
+    private void OnApplicationQuit()
     {
-        ns.Close();
-        ns = null;
-        client.Close();
-        client = null;
+        try
+        {
+            _ns.Close();
+            _ns = null;
+            _client.Close();
+            _client = null;
+        }
+        catch (NullReferenceException ex)
+        {
+            Debug.Log($"{ex}");
+        }
     }
 
 
     public void Connect()
     {
-        Thread thread = new Thread(
-                new ThreadStart(
-                    ConnectToServer));
+        var thread = new Thread(
+                ConnectToServer);
         thread.Start();
     }
 
 
-    public void ConnectToServer()
+    private void ConnectToServer()
     {
-        client = new TcpClient();
-        client.Connect(ipEndPoint);
-
-        ns = client.GetStream();
-
-        Thread receiveThread = new Thread(() => ReceiveFromServer());
-        SendUsername();
-    }
-
-
-    public void SendUsername()
-    {
-        String username = UIManager.instance.usernameField.text;
-
-        // First character in message is the datatype so server can identify
-        // what kind of message its receiving from client
-        Byte[] sendBytes = Encoding.UTF8.GetBytes($"1{username}");
-
-        ns.Write(sendBytes, 0, sendBytes.Length);
-
-        // Start pinging the server after sending client's username
-        PingServer();
-    }
-
-
-    public void ReceiveFromServer()
-    {
-        NetworkStream ns = client.GetStream();
-
-        while (true)
-        {
-            // Reads NetworkStream into a byte buffer.
-            byte[] bytes = new byte[client.ReceiveBufferSize];
-
-            // Read can return anything from 0 to numBytesToRead.
-            // This method blocks until at least one byte is read.
-            ns.Read(bytes, 0, (int)client.ReceiveBufferSize);
-
-            // Returns the data received from the host to the console.
-            string returndata = Encoding.UTF8.GetString(bytes);
-
-            if (returndata.Length > 0)
-            {
-                Debug.Log("Server assigned ID of " + returndata + " to you");
-            }
-        }
-    }
-
-
-    public void PingServer()
-    {
-        // Pinging server every 5 seconds just
-        // to compensate possible network delays
-        DateTime targetTime = DateTime.Now.AddMilliseconds(5000);
-
+        Debug.Log("Connecting to the server");
         try
         {
-            while (client.Connected)
-            {
-                while (targetTime > DateTime.Now && client != null)
-                {
-                    // Do nothing
-                }
-                targetTime = DateTime.Now.AddSeconds(9);
-                Ping();
-            }
-        }
-        catch (NullReferenceException ex)
-        {
-            Debug.Log(ex);
-        }
-    }
-
-
-    public void Ping()
-    {
-        // '2' is the dataType on server for pings
-        Byte[] sendBytes = Encoding.UTF8.GetBytes("2");
-        try
-        {
-            ns.Write(sendBytes, 0, sendBytes.Length);
+            _client = new TcpClient();
+            _client.Connect(_ipEndPoint);
+            var receiveThread = new Thread(ReceiveFromServer);
+            receiveThread.Start();
         }
         catch (Exception ex)
         {
-            if (ex is ObjectDisposedException || ex is OverflowException)
+            Debug.Log($"Failed to connect to the server:\r\n{ex}");
+
+            try
             {
-                Debug.Log(ex);
-            } else
+                if (_client == null) Task.Delay(1000).ContinueWith(t => ConnectToServer());
+            }
+            catch (Exception ex2)
             {
-                // Debug any error
-                Debug.Log(ex);
+                // Stop looping, running Unity has been stopped
+                Debug.Log($"{ex2}");
             }
         }
-        Debug.Log("Ping sent to server");
+    }
+
+
+    private static void SendUsername()
+    {
+        var username = UIManager.Instance.usernameField.text.Trim();
+        var message = $"username{username}";
+
+        // First character is the length of the message
+        var sendBytes = Encoding.UTF8.GetBytes($"{message.Length} {message}");
+        
+        _ns.Write(sendBytes, 0, sendBytes.Length);
+    }
+
+
+    private void ReceiveFromServer()
+    {
+        Debug.Log("Connected to the server");
+        
+        _ns = _client.GetStream();
+        SendUsername();
+
+        while (CheckIfConnected())
+        {
+            // Reads NetworkStream into a byte buffer.
+            var bytes = new byte[_client.ReceiveBufferSize];
+
+            // Read can return anything from 0 to numBytesToRead.
+            // This method blocks until at least one byte is read.
+            _ns.Read(bytes, 0, _client.ReceiveBufferSize);
+
+            // Returns the data received from the host to the console.
+            var returned = Encoding.UTF8.GetString(bytes);
+
+            if (returned.Length > 0)
+            {
+                Debug.Log($"Message from server: {returned}");
+            }
+        }
+        Debug.Log("Disconnected");
+
+        ConnectToServer();
+    }
+
+
+    private bool CheckIfConnected()
+    {
+
+        // Get an object that provides information about the local
+    // computer's network connectivity and traffic statistics.
+    var ipGlobalProperties
+        = IPGlobalProperties.GetIPGlobalProperties();
+            
+    // Check if the remote endpoint exists in the active connections
+    var tcpConnections =
+        ipGlobalProperties.GetActiveTcpConnections().Where(x =>
+            x.LocalEndPoint.Equals(_client.Client.LocalEndPoint) &&
+            x.RemoteEndPoint.Equals(_client.Client.RemoteEndPoint)).ToArray();
+            
+    // If results were found for the given endpoints
+    if (tcpConnections.Length > 0)
+    {
+        // Get the state of the first result
+        var stateOfConnection = tcpConnections.First().State;
+        if (stateOfConnection != TcpState.Established)
+        {
+            // Connection not established, not connected anymore
+            return false;
+        }
+    }
+
+    return true;
     }
 }

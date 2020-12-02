@@ -5,18 +5,18 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public static  UIManager instance;
+    public static  UIManager Instance;
 
     public GameObject startMenu;
     public InputField usernameField;
 
     private void Awake()
     {
-        if (instance == null)
+        if (Instance == null)
         {
-            instance = this;
+            Instance = this;
         }
-        else if (instance != this)
+        else if (Instance != this)
         {
             Debug.Log("Instance already exists, destroying object");
             Destroy(this);
@@ -27,6 +27,6 @@ public class UIManager : MonoBehaviour
     {
         startMenu.SetActive(false);
         usernameField.interactable = false;
-        Client.instance.Connect();
+        Client.Instance.Connect();
     }
 }
