@@ -2,26 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1e90b382-1d51-4cc6-bc24-1055b29563a0" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Main.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Main.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.GameClient/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.GameClient/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Client.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Client.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UIManager.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ArtifactDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ArtifactDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/08/08f754c54b3a24633bc7b50c0d34177d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/13/130e2bfb3b441464bdc7c20acddede9a" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/16/16f2df00238de40839e1a5fb021be072" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/20/203e4e4e15eceed26052e134ad43e6db" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/22/227bc0143ca67ac44dd47cc0295bca75" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/29/29682e06133c248694feacba6f4e9f6d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/2c/2c8288567a1a9c535ecec8f66b6f5c11" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/80/80815a645e93e8a28296ee1285206869" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/83/83422cf3af385fffa2c5f85078d7405f" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/8a/8a36aabe0739db6ff16424aa6d0f0f4b" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/a2/a266465bbd156caf17abdc5e759cf10d" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/c9/c99132fc69ea9c4fbb921ce5d26012f8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/dc/dcda5ef021efacdcf6af7641af512df8" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/Artifacts/f9/f9e97f9b5c6e6e6971aaf9c519efcb91" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/92/92c59152aedc3258ea38206e0a6270f1" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ab/aba7d749ffee68927fd5b51c946b6680" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/b2/b203adb15978ae331e3a52f090a20c97" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/be/be854869afc25f315aa7a23d49714258" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/d4/d460b6bb61336e5d8bac776545b7729d" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/Artifacts/ef/efad75eb3ec5da923441cb60583c2b07" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" beforeDir="false" afterPath="$PROJECT_DIR$/Library/CurrentLayout-default.dwlt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Library/InspectorExpandedItems.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Assembly-CSharp.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/Unity.CollabProxy.Editor.dll" afterDir="false" />
@@ -35,9 +26,9 @@
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEditor.UI.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.TestRunner.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ScriptAssemblies/UnityEngine.UI.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" beforeDir="false" afterPath="$PROJECT_DIR$/Library/ShaderCache/EditorEncounteredVariants" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Library/SourceAssetDB" beforeDir="false" afterPath="$PROJECT_DIR$/Library/SourceAssetDB" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/95720c-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/95720c-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Library/StateCache/Hierarchy/faed84-mainStage.json" beforeDir="false" afterPath="$PROJECT_DIR$/Library/StateCache/Hierarchy/faed84-mainStage.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/Assembly-CSharp.csprojAssemblyReference.cache" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,6 +87,7 @@
       <updated>1606790129935</updated>
       <workItem from="1606790134604" duration="7001000" />
       <workItem from="1606884632499" duration="840000" />
+      <workItem from="1607326377151" duration="4515000" />
     </task>
     <servers />
   </component>

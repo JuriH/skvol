@@ -105,30 +105,37 @@ public class Client : MonoBehaviour
     private void ReceiveFromServer()
     {
         Debug.Log("Connected to the server");
-        
-        _ns = _client.GetStream();
-        SendUsername();
-
-        while (CheckIfConnected())
+        try
         {
-            // Reads NetworkStream into a byte buffer.
-            var bytes = new byte[_client.ReceiveBufferSize];
+            _ns = _client.GetStream();
+            SendUsername();
 
-            // Read can return anything from 0 to numBytesToRead.
-            // This method blocks until at least one byte is read.
-            _ns.Read(bytes, 0, _client.ReceiveBufferSize);
-
-            // Returns the data received from the host to the console.
-            var returned = Encoding.UTF8.GetString(bytes);
-
-            if (returned.Length > 0)
+            while (CheckIfConnected())
             {
-                Debug.Log($"Message from server: {returned}");
-            }
-        }
-        Debug.Log("Disconnected");
+                // Reads NetworkStream into a byte buffer.
+                var bytes = new byte[_client.ReceiveBufferSize];
 
-        ConnectToServer();
+                // Read can return anything from 0 to numBytesToRead.
+                // This method blocks until at least one byte is read.
+                _ns.Read(bytes, 0, _client.ReceiveBufferSize);
+
+                // Returns the data received from the host to the console.
+                var returned = Encoding.UTF8.GetString(bytes);
+
+                if (returned.Length > 0)
+                {
+                    Debug.Log($"Message from server: {returned}");
+                }
+            }
+
+            Debug.Log("Disconnected");
+
+            ConnectToServer();
+        }
+        catch (SocketException ex)
+        {
+            Debug.Log($"Unity-client already disconnected: {ex}");
+        }
     }
 
 
