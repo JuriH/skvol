@@ -1,14 +1,24 @@
 ﻿using System;
+using System.Threading;
 
-namespace GameServer2
+namespace GameServer
 {
-    class Program
+    internal static class Program
     {
-        static void Main(string[] args)
+        private static void Main()
         {
             Console.Title = "Game Server";
             Console.WriteLine("Server started");
-            Clients.AcceptNewClientsInAsync();
+            StartThreads();
+            //Clients.AcceptNewClientsInAsync();
+        }
+        
+        private static void StartThreads()
+        {
+            var threadTcp = new Thread(TcpServer.SetupTcp);
+            var threadWebSocket = new Thread(Websocket.SetupWebSocket);
+            threadTcp.Start();
+            threadWebSocket.Start();
         }
     }
 }

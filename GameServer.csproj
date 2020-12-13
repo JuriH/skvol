@@ -12,7 +12,8 @@
     <TargetFrameworkVersion>v3.0</TargetFrameworkVersion>
     <TargetFrameworkProfile />
     <ProjectGuid>{7F0C89CC-D87E-4281-BF0D-FD2554F65ED5}</ProjectGuid>
-    <StartupObject>GameServer2.Program</StartupObject>
+    <StartupObject>GameServer.Program</StartupObject>
+    <OutputType>Exe</OutputType>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <OutputPath>C:\Users\Hadis\Documents\VM_Shared_Folder\GameServer\</OutputPath>
@@ -21,5 +22,8 @@
   </PropertyGroup>
   <ItemGroup>
     <None Include="app.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Properties\Program.cs" />
   </ItemGroup>
 </Project>

@@ -19,3 +19,12 @@ C:\Users\Hadis\Documents\VM_Shared_Folder\GameServer\netcoreapp3.1\win-x64\GameS
 C:\Users\Hadis\Documents\VM_Shared_Folder\GameServer\netcoreapp3.1\win-x64\GameServer.runtimeconfig.dev.json
 C:\Users\Hadis\Documents\VM_Shared_Folder\GameServer\netcoreapp3.1\win-x64\GameServer.dll
 C:\Users\Hadis\Documents\VM_Shared_Folder\GameServer\netcoreapp3.1\win-x64\GameServer.pdb
+C:\Users\Hadis\source\repos\GameServer2\obj\Debug\netcoreapp3.1\win-x64\GameServer.csprojAssemblyReference.cache
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.csprojAssemblyReference.cache
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.AssemblyInfoInputs.cache
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.AssemblyInfo.cs
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.csproj.CoreCompileInputs.cache
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.csproj.CopyComplete
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.dll
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.pdb
+C:\Users\Hadis\source\repos\GameServer\obj\Debug\netcoreapp3.1\win-x64\GameServer.genruntimeconfig.cache

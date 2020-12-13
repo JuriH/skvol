@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "XhMpekemMgAMZljJudutV3FZpnj6isCbARd1y2mVkR2X1UrWKdBSR3seYbZCf3P6VpMEHnvKNkq9k07Zqm1ekg==",
+  "dgSpecHash": "NFDxhdeUmXkUP7ikvHL46Ml2Ej08WqWmULj3Qrr+s/uSHf+yt/ifbmTLHmTpJsdiFrNik5rUZKJ6LZxAMdBM5w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hadis\\source\\repos\\GameServer2\\GameServer.csproj",
+  "projectFilePath": "C:\\Users\\Hadis\\source\\repos\\GameServer\\GameServer.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Hadis\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\3.1.9\\microsoft.windowsdesktop.app.runtime.win-x64.3.1.9.nupkg.sha512",
     "C:\\Users\\Hadis\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x64\\3.1.9\\microsoft.netcore.app.runtime.win-x64.3.1.9.nupkg.sha512",
+    "C:\\Users\\Hadis\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x64\\3.1.9\\microsoft.windowsdesktop.app.runtime.win-x64.3.1.9.nupkg.sha512",
     "C:\\Users\\Hadis\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x64\\3.1.9\\microsoft.aspnetcore.app.runtime.win-x64.3.1.9.nupkg.sha512"
   ],
   "logs": []

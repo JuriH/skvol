@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using System.Net.Sockets;
 
-namespace GameServer2
+namespace GameServer
 {
     /// <summary>
     /// Wrapper around TcpListener that exposes the Active property

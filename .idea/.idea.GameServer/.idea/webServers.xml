@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="24bc8b4d-2266-4cab-88b8-dc9211017bf0" name="AWS LightSail Ubuntu" url="http://18.192.144.101/">
+        <fileTransfer rootFolder="/home/ubuntu/gameserver" accessType="SFTP" host="18.192.144.101" port="22" sshConfigId="9061fc26-0c3a-40ef-ac4c-2aba0a7e1190" sshConfig="ubuntu@18.192.144.101:22 key" keyPair="true">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

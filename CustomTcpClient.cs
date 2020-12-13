@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Linq;
+using System.Net.NetworkInformation;
 using System.Net.Sockets;
 
-namespace GameServer2
+namespace GameServer
 {
-    class CustomTcpClient : TcpClient
+    internal class CustomTcpClient : TcpClient
     {
-        public int Id { get; set; }
-        public String Username { get; set; }
+        //public int Id { get; set; }
+        public string Username { get; set; }
 
         public CustomTcpClient(Socket acceptedSocket)
         {
@@ -15,9 +17,20 @@ namespace GameServer2
             // But I don't like it, because default constructor of
             // TcpClient will be called, which creates new socket
             // (which is disposed at the first line).
-            this.Client.Dispose();
-            this.Client = acceptedSocket;
-            this.Active = true;
+            Client.Dispose();
+            Client = acceptedSocket;
+            Active = true;
+        }
+        
+        
+        // https://stackoverflow.com/a/19706302
+        public static TcpState GetState(TcpClient tcpClient)
+        {
+            var foo = IPGlobalProperties.GetIPGlobalProperties()
+                .GetActiveTcpConnections()
+                .SingleOrDefault(x =>
+                    x.LocalEndPoint.Equals(tcpClient.Client.LocalEndPoint));
+            return foo?.State ?? TcpState.Unknown;
         }
     }
 }

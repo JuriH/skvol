@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Hadis\\source\\repos\\GameServer2\\GameServer.csproj",
+      "projectUniqueName": "C:\\Users\\Hadis\\source\\repos\\GameServer\\GameServer.csproj",
       "projectName": "GameServer",
-      "projectPath": "C:\\Users\\Hadis\\source\\repos\\GameServer2\\GameServer.csproj",
+      "projectPath": "C:\\Users\\Hadis\\source\\repos\\GameServer\\GameServer.csproj",
       "packagesPath": "C:\\Users\\Hadis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Hadis\\source\\repos\\GameServer2\\obj\\",
+      "outputPath": "C:\\Users\\Hadis\\source\\repos\\GameServer\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Hadis\\AppData\\Roaming\\NuGet\\NuGet.Config",
