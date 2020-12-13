@@ -29,35 +29,39 @@ public class UIManager : MonoBehaviour
     {
         startMenu.SetActive(false);
         usernameField.interactable = false;
+
         if (usernameField.text.Trim() == "")
         {
-            Debug.Log("Username is empty");
-            
+            Debug.Log("Enter a valid username");
             // TODO: Visual feedback about empty username field
         }
         else
         {
-            if (!IsUsernameTaken())
+            if (IsUsernameAvailable())
             {
+                Debug.Log(
+                    "Username available, connecting to the server");
                 Client.Instance.Connect();
             }
             else
             {
+                Debug.Log("Username is already taken");
                 // TODO: Visual feedback of already taken username
             }
         }
     }
 
 
-    private bool IsUsernameTaken()
+    private bool IsUsernameAvailable()
     {
     Debug.Log(
-            $"Checking if username is available");
+            "Checking if username is available");
 
     var byteArray = Encoding.UTF8.GetBytes(
             "username=" + usernameField.text);
         var webRequest =
-            (HttpWebRequest)WebRequest.Create("http://localhost:8000/isUsernameTaken.php/");
+            (HttpWebRequest)WebRequest.Create(
+                "http://18.192.144.101/php/isUsernameAvailable.php/");
         webRequest.Method = "POST";
         webRequest.ContentType = "application/x-www-form-urlencoded";
         webRequest.ContentLength = byteArray.Length;

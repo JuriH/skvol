@@ -14,7 +14,7 @@ public class Client : MonoBehaviour
     // readonly keyword allow the variable to be
     // initialized either at compile time or runtime.
     public static Client Instance;
-    private const string Host = "127.0.0.1";
+    private const string Host = "18.192.144.101";
     private const int Port = 26950;
 
     private readonly IPEndPoint _ipEndPoint = new IPEndPoint(
@@ -111,6 +111,7 @@ public class Client : MonoBehaviour
             SendUsername();
 
             while (CheckIfConnected())
+            // while (true)
             {
                 // Reads NetworkStream into a byte buffer.
                 var bytes = new byte[_client.ReceiveBufferSize];
